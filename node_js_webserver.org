@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       22413797-0DBF-48F4-B6CD-1E694482A631
+:END:
+#+title: Node.js Webserver
+
+#+begin_src sh
+  npx http-server
+#+end_src
