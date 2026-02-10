@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       1CCFD2EE-1AF5-42C6-88D3-DE4D6AB050D3
+:END:
+#+title: Python 2 Webserver
+
+#+begin_src sh
+  python2 -m SimpleHTTPServer
+#+end_src

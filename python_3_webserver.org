@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       3F4F39FC-F1BC-489A-A8AC-A9251E8DCB61
+:END:
+#+title: Python 3 Webserver
+
+#+begin_src sh
+  python3 -m http.server
+#+end_src
