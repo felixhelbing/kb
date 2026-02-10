@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       5B844B27-6BAB-405E-9BBF-8FED7F39956B
+:END:
+#+title: Java 14 Switch Yield
+
+#+begin_src java
+  public class Foo {
+
+    public static void main(String[] args) {
+      int q = 1;
+      String result = switch (q) {
+        case 1 -> "foo";
+        case 2 -> {
+          yield "bar";
+        }
+        default -> "nope";
+      };
+      System.out.println(result);
+    }
+
+  }
+#+end_src
