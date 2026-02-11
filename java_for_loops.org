@@ -1,0 +1,106 @@
+:PROPERTIES:
+:ID:       3E7C9C8F-D581-4879-9146-36CD39FD0D4D
+:END:
+#+title: Java For Loops
+
+* Java 1.0: Classic
+
+  #+begin_src java
+    public class ClassicFor {
+
+      public static void main(String[] args) {
+        String[] items = { "foo", "bar", "baz" };
+        for (int i = 0; i < items.length; i++) {
+          System.out.println(items[i]);
+        }
+      }
+
+    }
+  #+end_src
+
+* Java 5: Enhanced For / For-Each
+
+  #+begin_src java
+    public class EnhancedFor {
+
+      public static void main(String[] args) {
+        String[] items = {"foo", "bar", "baz"};
+        for (String item : items) {
+          System.out.println(item);
+        }
+      }
+
+    }
+  #+end_src
+
+* Java 8: Collection.forEach Anonymous
+
+  #+begin_src java
+    import java.util.Arrays;
+    import java.util.List;
+    import java.util.function.Consumer;
+
+    public class ForEachAnonymous {
+
+      public static void main(String[] args) {
+        List<String> list = Arrays.asList("foo", "bar", "baz");
+        list.forEach(new Consumer<String>() {
+            @Override
+            public void accept(String item) {
+              System.out.println(item);
+            }
+          });
+      }
+
+    }
+  #+end_src
+
+* Java 8: Collection.forEach Lambda
+
+  #+begin_src java
+    import java.util.Arrays;
+    import java.util.List;
+
+    public class ForEachLambda {
+
+      public static void main(String[] args) {
+        List<String> list = Arrays.asList("foo", "bar", "baz");
+        list.forEach(item -> System.out.println(item));
+      }
+
+    }
+  #+end_src
+
+* Java 8: Collection.forEach Method Reference
+
+  #+begin_src java
+    import java.util.Arrays;
+    import java.util.List;
+
+    public class ForEachMethodRef {
+
+      public static void main(String[] args) {
+        List<String> list = Arrays.asList("foo", "bar", "baz");
+        list.forEach(System.out::println);
+      }
+
+    }
+  #+end_src
+
+* Java 8: Stream.forEach
+
+  #+begin_src java
+    import java.util.Arrays;
+    import java.util.List;
+
+    public class StreamForEach {
+
+      public static void main(String[] args) {
+        List<String> list = Arrays.asList("foo", "bar", "baz");
+        list.stream()
+          .filter(item -> item.startsWith("f"))
+          .forEach(System.out::println);
+      }
+
+    }
+  #+end_src
