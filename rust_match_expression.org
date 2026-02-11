@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       AA8E9BA6-EBA9-4CDA-82BD-7929DFACFB2F
+:END:
+#+title: Rust Match Expression
+
+#+begin_src rust
+  fn main() {
+    let q = 1;
+    let result = match q {
+      1 => "foo",
+      2 => {
+        "bar"
+      }
+      _ => "nope",
+    };
+    println!("{}", result);
+  }
+#+end_src
