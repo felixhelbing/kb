@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       552C1B67-3E19-4487-981B-18BD032987A6
+:END:
+#+title: wc (Word Count)
+
+#+begin_src sh
+  wc foo.txt
+#+end_src
+
+1. Line count
+2. Word count
+3. Byte count
+4. Filename
+
+#+begin_example
+  34      66     729 foo.txt
+#+end_example
