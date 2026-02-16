@@ -1,0 +1,34 @@
+:PROPERTIES:
+:ID:       491612B7-3801-4274-9631-C7AAABED86FD
+:END:
+#+title: Whitespaces vs. Tabs
+
+* Whitespaces
+
+** Pro
+
+   - Sieht überall gleich aus
+   - Genaue Kontrolle über Einrückung (z.B. 2 Spaces)
+   - Standard in den meisten Projekten
+   - Pflicht in manchen Sprachen (YAML), de facto Standard in anderen (Python)
+
+** Contra
+
+   - Größere Dateien
+   - Feste Einrückungsbreite
+   - Manuelle Navigation (Pfeiltasten) braucht mehr Tastendrücke
+   - Semantisch falsch: Einrückung ist keine Folge von Leerzeichen
+
+* Tabs
+
+** Pro
+
+   - Semantisch korrekt: ein Tab = eine Einrückungsebene
+   - Breite pro Entwickler einstellbar (auch barrierefreundlich)
+   - Kleinere Dateien
+
+** Contra
+
+   - Mischen mit Spaces für Alignment problematisch
+   - Viele Linter und Styleguides erzwingen Spaces
+   - In manchen Sprachen nicht erlaubt (YAML) oder unüblich (Python)
