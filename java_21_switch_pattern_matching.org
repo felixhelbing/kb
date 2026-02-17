@@ -1,0 +1,97 @@
+:PROPERTIES:
+:ID:       ACB97BE4-E9C9-4DA8-B9BE-FCF120A06CE8
+:END:
+#+title: Java 21 Switch Pattern Matching
+
+* Requirements:
+
+  - Java 21
+
+* Type Patterns
+
+  #+begin_src java
+    public class Foo {
+
+      interface Shape {}
+
+      record Circle(double radius) implements Shape {}
+      record Rect(double w, double h) implements Shape {}
+
+      static final class Triangle implements Shape {
+        final double a, b, c;
+        Triangle(double a, double b, double c) {
+          this.a = a; this.b = b; this.c = c;
+        }
+      }
+
+      static String describe(Shape s) {
+        return switch (s) {
+          case null -> null;
+          case Circle c when c.radius() > 10 -> "grosser Kreis r=" + c.radius();
+          case Circle c -> "Kreis r=" + c.radius();
+          case Rect r -> "Rechteck " + r.w() + "x" + r.h();
+          default -> "unbekannte Form: " + s.getClass().getSimpleName();
+        };
+      }
+
+      public static void main(String[] args) {
+        System.out.println(describe(new Circle(5)));
+        System.out.println(describe(new Circle(20)));
+        System.out.println(describe(new Rect(3, 4)));
+        System.out.println(describe(new Triangle(3, 4, 5)));
+      }
+
+    }
+  #+end_src
+
+* Sealed Interface
+
+  #+begin_src java
+    public class Foo {
+
+      sealed interface Shape permits Circle, Rect {}
+      record Circle(double radius) implements Shape {}
+      record Rect(double w, double h) implements Shape {}
+
+      static String describe(Shape s) {
+        return switch (s) {
+          case Circle c when c.radius() > 10 -> "grosser Kreis r=" + c.radius();
+          case Circle c -> "Kreis r=" + c.radius();
+          case Rect r -> "Rechteck " + r.w() + "x" + r.h();
+        };
+      }
+
+      public static void main(String[] args) {
+        System.out.println(describe(new Circle(5)));
+        System.out.println(describe(new Circle(20)));
+        System.out.println(describe(new Rect(3, 4)));
+      }
+
+    }
+  #+end_src
+
+* Record Patterns (Dekonstruktion)
+
+  #+begin_src java
+    public class Foo {
+
+      sealed interface Shape permits Circle, Rect {}
+      record Circle(double radius) implements Shape {}
+      record Rect(double w, double h) implements Shape {}
+
+      static String describe(Shape s) {
+        return switch (s) {
+          case Circle(double r) when r > 10 -> "grosser Kreis r=" + r;
+          case Circle(double r) -> "Kreis r=" + r;
+          case Rect(double w, double h) -> "Rechteck " + w + "x" + h;
+        };
+      }
+
+      public static void main(String[] args) {
+        System.out.println(describe(new Circle(5)));
+        System.out.println(describe(new Circle(20)));
+        System.out.println(describe(new Rect(3, 4)));
+      }
+
+    }
+  #+end_src
